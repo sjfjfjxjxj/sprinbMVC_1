@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 여기 내용은 서블릿컨텍스트.xml에 적는 사람들도 있다 ㅇㅇ 태그는 쫌 다름 -->
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<!-- 이 클래스 주소들 잘 들어가지면 메이븐 업뎃 잘 된것ㅇㅇ -->
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+		<property name="url"			 value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+		<property name="username"		 value="SPRING"></property>
+		<property name="password"		 value="SPRING"></property>
+	</bean>	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis_config.xml"></property><!-- 문자열이라 value. classpath는 리소시스아래 있는거라서! -->
+		<property name="dataSource" 	ref="dataSource"></property><!-- ref는 위에거 아이디값 -->
+	</bean>
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSession"></constructor-arg>
+	</bean>
+</beans>

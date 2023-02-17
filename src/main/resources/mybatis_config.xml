@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="org.kh.spring.member.domain.Member" alias="Member" />
+		<!-- 나 도메인ㅇ 멤버클래스 만들었고 -->
+	</typeAliases>
+	<mappers>
+		<mapper resource="mappers/member-mapper.xml"/>
+		<!-- 맴버메퍼.xml 파일도 만들었어ㅇㅇ 하고 알려줘야함 -->
+	</mappers>
+</configuration>  
